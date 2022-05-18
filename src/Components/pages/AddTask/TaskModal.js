@@ -1,34 +1,31 @@
-import themes from 'daisyui/src/colors/themes';
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const TaskModal = ({setIsModalOpen}) => {
- 
-    const handleAddask = e =>{
-        e.preventDefault();
-        const title = e.target.title.value;
-        const taskText = e.target.task.value;
-        
-        const task = {
-            title:title,
-            taskText:taskText
-        }
-        fetch(`http://localhost:5000/addtask`,{
-            method:"POST",
-            headers:{
-                "Content-type" : "application/json"
-            },
-            body: JSON.stringify(task)
-        })
-        .then(res => res.json())
-        .then(data => {
-            if(data.acknowledged){
-                toast.success('Task added successfully')
-            }
-        })
+const TaskModal = ({ refetch }) => {
+  const handleAddask = (e) => {
+    e.preventDefault();
+    const title = e.target.title.value;
+    const taskText = e.target.task.value;
 
-        
-    }
+    const task = {
+      title: title,
+      taskText: taskText,
+    };
+    fetch(`http://localhost:5000/addtask`, {
+      method: 'POST',
+      headers: {
+        'Content-type': 'application/json',
+      },
+      body: JSON.stringify(task),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.acknowledged) {
+          toast.success('Task added successfully');
+          refetch()
+        }
+      });
+  };
   return (
     <div>
       <div>
@@ -64,7 +61,7 @@ const TaskModal = ({setIsModalOpen}) => {
                 id=''
                 className='input my-3 input-bordered w-full h-[100px]'
               ></textarea>
-    
+
               <input
                 type='submit'
                 value='Add'
@@ -86,6 +83,6 @@ const TaskModal = ({setIsModalOpen}) => {
       </div>
     </div>
   );
-}
+};
 
 export default TaskModal
