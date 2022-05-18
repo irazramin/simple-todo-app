@@ -25,7 +25,10 @@ const TaskModal = ({ refetch }) => {
           refetch()
         }
       });
+
+      e.target.reset();
   };
+  
   return (
     <div>
       <div>

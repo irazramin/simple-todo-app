@@ -19,6 +19,8 @@ const AddTask = () => {
    if(isLoading){
        return <h2 className='flex justify-center items-center'>Loading...</h2>
    }
+
+ 
   return (
     <div className='w-[80%] mx-auto'>
       <div className='text-center'>
@@ -33,7 +35,7 @@ const AddTask = () => {
       <div className=' mt-10'>
         <h2 className='text-xl text-center'>Total task : {tasks.length}</h2>
         {tasks.map((task) => (
-          <SingleTask key={task._id} task={task} />
+          <SingleTask key={task._id} task={task} refetch={refetch} />
         ))}
       </div>
 
