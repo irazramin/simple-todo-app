@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const SingleTask = ({ task, refetch }) => {
   const { _id, taskText, title, completeStatus } = task;
   const deleteTask = (id) => {
-    fetch(`http://localhost:5000/deleteTask/${id}`, {
+    fetch(`https://serene-lake-01666.herokuapp.com/deleteTask/${id}`, {
       method: 'DELETE',
     })
       .then((res) => res.json())
@@ -17,7 +17,7 @@ const SingleTask = ({ task, refetch }) => {
   };
 
   const completeTask = id =>{
-         fetch(`http://localhost:5000/completeTask/${id}`, {
+         fetch(`https://serene-lake-01666.herokuapp.com/completeTask/${id}`, {
            method: 'PUT',
            headers:{
                "Content-type" : "application/json"

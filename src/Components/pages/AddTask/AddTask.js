@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useQuery } from 'react-query';
 import SingleTask from './SingleTask';
 import TaskModal from './TaskModal';
@@ -13,7 +13,7 @@ const AddTask = () => {
          isLoading,
          refetch,
        } = useQuery('task', () =>
-         fetch(`http://localhost:5000/addtask`)
+         fetch(`https://serene-lake-01666.herokuapp.com/addtask`)
            .then((res) => res.json())
        );
    if(isLoading){

@@ -11,7 +11,7 @@ const TaskModal = ({ refetch, setIsModalOpen }) => {
       title: title,
       taskText: taskText,
     };
-    fetch(`http://localhost:5000/addtask`, {
+    fetch(`https://serene-lake-01666.herokuapp.com/addtask`, {
       method: 'POST',
       headers: {
         'Content-type': 'application/json',
