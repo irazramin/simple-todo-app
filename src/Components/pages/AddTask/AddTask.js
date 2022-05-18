@@ -25,6 +25,7 @@ const AddTask = () => {
     <div className='w-[80%] mx-auto'>
       <div className='text-center'>
         <label
+          onClick={() => setIsModalOpen(true)}
           for='my-modal'
           class='btn modal-button btn btn-primary mx-auto mt-5 font-bold'
         >
@@ -39,7 +40,9 @@ const AddTask = () => {
         ))}
       </div>
 
-      <TaskModal refetch={refetch} />
+      {isModalOpen && (
+        <TaskModal refetch={refetch} setIsModalOpen={setIsModalOpen} />
+      )}
     </div>
   );
 }

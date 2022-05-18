@@ -1,7 +1,7 @@
 import React from 'react';
 import { toast } from 'react-toastify';
 
-const TaskModal = ({ refetch }) => {
+const TaskModal = ({ refetch, setIsModalOpen }) => {
   const handleAddask = (e) => {
     e.preventDefault();
     const title = e.target.title.value;
@@ -22,13 +22,14 @@ const TaskModal = ({ refetch }) => {
       .then((data) => {
         if (data.acknowledged) {
           toast.success('Task added successfully');
-          refetch()
+          refetch();
+          setIsModalOpen(false)
         }
       });
 
-      e.target.reset();
+    e.target.reset();
   };
-  
+
   return (
     <div>
       <div>
@@ -57,28 +58,29 @@ const TaskModal = ({ refetch }) => {
                 placeholder='Add title'
                 name='title'
                 className='input input-bordered w-full'
+                required
               />
               <textarea
                 placeholder='task'
                 name='task'
                 id=''
+                required
                 className='input my-3 input-bordered w-full h-[100px]'
               ></textarea>
-
-              <input
+              {/* <input
                 type='submit'
                 value='Add'
                 className='btn btn-secondary w-full text-white '
-              />
-              {/* <div class='modal-action w-full'>
-                <label
-                type='submit'
+              /> */}
+
+
+                <button
                   for='my-modal'
-                  class='btn btn-secondary w-full text-white'
+                  type='submit'
+                  class='btn btn-secondary w-full text-white '
                 >
-                  Yay!
-                </label>
-              </div> */}
+                  Add
+                </button>
             </form>
             <div className='modal-action'></div>
           </div>
@@ -88,4 +90,4 @@ const TaskModal = ({ refetch }) => {
   );
 };
 
-export default TaskModal
+export default TaskModal;
